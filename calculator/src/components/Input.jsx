@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Input = (props) => {
+const Input = ({value}) => {
   return (
     <>
-    <input className='text' type="text" value={props.val} disabled/>
+    <input className='text' type="text" value={value} disabled/>
     </>
   )
 }

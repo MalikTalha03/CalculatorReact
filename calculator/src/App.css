@@ -40,8 +40,9 @@
 .text {
   font-size: 20px;
   font-weight: bold;
-  color: grey;
-  width: 397px;
+  color: white;
+  background-color: #5f6064;
+  width: 396px;
   height: 60px;
   text-align: right;
   margin: 0;
@@ -81,6 +82,17 @@
   background-color: sandybrown;
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.calc {
+  border: #282c34 1px solid;
+}
 
 
 
