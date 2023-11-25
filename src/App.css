@@ -85,14 +85,47 @@
 #root{
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.quotes {
+  margin: 8rem 4rem;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav h1 {
+  margin: 0;
+  padding: 50px;
+}
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-right: 50px;
+  font-size: 20px;
+}
+.nav ul .ulitem {
+  margin: 0 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.main{
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+.calc{
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
-
-.calc {
-  border: #282c34 1px solid;
-}
-
-
-
