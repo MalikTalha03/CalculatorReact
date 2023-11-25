@@ -26,11 +26,3 @@ function App() {
 }
 
 export default App;
-/*<Input value={inputValue} />
-      <div className="obj">
-        <div>
-          <Operands onOperandClick={handleOperandClick} />
-          <Keypad onKeypadClick={handleKeypadClick} />
-        </div>
-        <Operators onOperatorClick={handleOperatorClick} />
-      </div>  */
