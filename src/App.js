@@ -4,6 +4,7 @@ import Operands from './components/Operands';
 import Keypad from './components/Keypad';
 import Operators from './components/Operators';
 import './App.css';
+import Home from './components/Home';
 
 function App() {
   const [inputValue, setInputValue] = React.useState('');
@@ -25,16 +26,18 @@ function App() {
     }
   };
   const handleToggleSign = () => {
-    // Handle +/- operation if there is a number before "+/-"
     const lastPartIndex = expressionParts.length - 1;
     if (lastPartIndex >= 0 && !isNaN(expressionParts[lastPartIndex])) {
-      const lastPart = parseFloat(expressionParts.pop()) * -1;
-      setInputValue(lastPart.toString());
-      setExpressionParts([lastPart.toString()]);
+      // Toggle the sign of the last number in the expression
+      const lastPart = expressionParts[lastPartIndex];
+      const toggledValue = lastPart.startsWith('-') ? lastPart.slice(1) : `-${lastPart}`;
+      expressionParts[lastPartIndex] = toggledValue;
+      setInputValue(expressionParts.join(''));
     } else {
       setInputValue('Error: Invalid +/-');
     }
   };
+  
 
   const handleKeypadClick = (value) => {
     setInputValue((prevValue) => prevValue + value);
@@ -52,11 +55,39 @@ function App() {
         // Record the entire expression when an operator is clicked
         setExpressionParts((prevParts) => [...prevParts, value]);
         setInputValue((prevValue) => prevValue + value);
-      } else {
-        setExpressionParts([]);
-        setInputValue('Error: Consecutive Operators');
-
       }
+      else if ((lastPart === '-' || lastPart==='+') && (value === '-' || value === '+')) {
+        // Replace the last operator with the new operator
+        const newParts = [...expressionParts];
+        newParts.pop();
+        newParts.push(value);
+        setExpressionParts(newParts);
+        setInputValue((prevValue) => prevValue.slice(0, -1) + value);
+      }
+      else if ((lastPart === '*' || lastPart==='/') && (value === '*' || value === '/')) {
+        // Replace the last operator with the new operator
+        const newParts = [...expressionParts];
+        newParts.pop();
+        newParts.push(value);
+        setExpressionParts(newParts);
+        setInputValue((prevValue) => prevValue.slice(0, -1) + value);
+      }
+      else if ((lastPart === '*' || lastPart==='/') && (value === '-' || value === '+')) {
+        //add operator to expression
+        const newParts = [...expressionParts];
+        newParts.push(value);
+        setExpressionParts(newParts);
+        setInputValue((prevValue) => prevValue + value);
+      }
+      else if ((lastPart === '-' || lastPart==='+') && (value === '*' || value === '/')) {
+        //replace operator with new operator
+        const newParts = [...expressionParts];
+        newParts.pop();
+        newParts.push(value);
+        setExpressionParts(newParts);
+        setInputValue((prevValue) => prevValue.slice(0, -1) + value);
+      }
+
     }
   };
 
@@ -92,6 +123,7 @@ function App() {
 
   return (
     <>
+      <Home />
       <Input value={inputValue} />
       <div className="obj">
         <div>
@@ -99,7 +131,7 @@ function App() {
           <Keypad onKeypadClick={handleKeypadClick} />
         </div>
         <Operators onOperatorClick={handleOperatorClick} />
-      </div>
+      </div> 
     </>
   );
 }
