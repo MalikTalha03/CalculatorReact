@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple calculator built using React. It performs basic arithmetic operations.
+This is a calculator app built using React. It is a simple calculator that can perform basic arithmetic operations like addition, subtraction, multiplication, division and other calculator functions and buttons. It have a quote section that displays a random quote on every page refresh. 
 
 
 ## Built With
@@ -11,6 +11,7 @@ This is a simple calculator built using React. It performs basic arithmetic oper
 - JavaScript
 - HTML
 - CSS
+
 
 ## Live Demo
 
